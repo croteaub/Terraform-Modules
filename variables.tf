@@ -1,5 +1,6 @@
 variable "security_s3_bucket" {
   type = "map"
+  description = "The Name of the Regional Security Bucket in which to store config logs"
 }
 
 variable "all_supported_bool" {
@@ -12,13 +13,8 @@ variable "region" {
 }
 
 variable "security_sns_config_topic_arn" {
+  description = "The Security SNS Topic in which to send Config Notification too"
   type = "map"
-  default = {
-    "us-east-1" =  "arn:aws:sns:us-east-1:638514094130:PA-SNS-ConfigTopic-d-ue1-001"
-    "us-east-2" =  "arn:aws:sns:us-east-2:638514094130:PA-SNS-ConfigTopic-d-ue2-001"
-    "us-west-1" =  "arn:aws:sns:us-west-1:638514094130:PA-SNS-ConfigTopic-d-uw1-001"
-    "us-west-2" =  "arn:aws:sns:us-west-2:638514094130:PA-SNS-ConfigTopic-d-uw2-001"
-  }
 }
 
 variable "is_config_enabled_bool" {
@@ -26,16 +22,15 @@ variable "is_config_enabled_bool" {
   default     = "true"
 }
 
-variable "stamp_letter_id" {}
-
-variable "region_code" {
-  type = "map"
-  default = {
-    "us-east-1" = "ue1"
-    "us-east-2" = "ue2"
-    "us-west-1" = "uw1"
-    "us-west-2" = "uw2"
-  }
+variable "stamp_letter_id" {
+  description = "The Stamp Letter (P=Prod D=Dev S=Stage) in which the resources are in.  Used for naming convention"
 }
 
-variable "account_type_letter_id" {}
+variable "region_code" {
+  description = "The Region code in which corresponds to the current region.  Example UE1 = us-east-1.  Used for naming convnetion"
+  type = "map"
+}
+
+variable "account_type_letter_id" {
+  description = "The Account type Letter ID which describes the account.  Example M=Master N=NonProd P=Prod I=IT S=Security"
+}
