@@ -18,15 +18,14 @@ Usage
 ```hcl
 module "config" {
   source                          = "git::https://git_username:personalaccesstoken@github.pwc.com/PWC-Terraform-Modules/terrafrom-aws-config.git"
-  security_s3_bucket              = "${var.security_s3_bucket}"
-  all_supported_bool              = "${var.all_support}"
-  region                          = "${var.region}"
-  security_sns_config_topic_arn   = "${var.security_sns_config_topic_arn}"
-  is_config_enabled_bool          = "${var.is_config_enabled_bool}"
-  stamp_letter_id                 = "${var.stamp_letter_id}"
-  account_type_letter_id          = "${var.account_type_letter_id}"
-  region_code                     = "${var.region_code}"
-  }
+  security_s3_bucket              = "pa-as3-d-ue1-d-buc-d-sec-001"
+  all_supported_bool              = "true"
+  region                          = "us-east-1"
+  security_sns_config_topic_arn   = "arn:aws:sns:us-east-1:638514094130:PA-SNS-D-UE1-S-TPC-P-CONFG-001"
+  is_config_enabled_bool          = "true"
+  stamp_letter_id                 = "d"
+  account_type_letter_id          = "d"
+  region_code                     = "ue1"
 }
 ```
 
