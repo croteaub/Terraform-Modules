@@ -123,3 +123,13 @@ resource "aws_config_config_rule" "iam-password-policy" {
   input_parameters = "{\"RequireUppercaseCharacters\":\"true\",\"RequireLowercaseCharacters\":\"true\",\"RequireSymbols\":\"true\",\"RequireNumbers\":\"true\",\"MinimumPasswordLength\":\"8\",\"PasswordReusePrevention\":\"8\",\"MaxPasswordAge\":\"90\"}"
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
 }
+
+resource "aws_config_config_rule" "restricted-ssh" {
+  name = "restricted-ssh"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "INCOMING_SSH_DISABLED"
+  }
+  depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
+}
