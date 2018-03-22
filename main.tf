@@ -96,7 +96,7 @@ resource "aws_config_config_rule" "cloudtrail-enabled" {
     owner             = "AWS"
     source_identifier = "CLOUD_TRAIL_ENABLED"
   }
-  input_parameters = "{\"s3BucketName\":\"${lookup(var.security_s3_bucket, var.region)}\"}"
+  input_parameters = "{\"s3BucketName\":\"${lookup(var.security_s3_bucket, var.region)}\",\"cloudWatchLogsLogGroupArn\":\"${lookup(var.cloudtrail_logs_group_arn, var.region)}\"}"
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
 }
 

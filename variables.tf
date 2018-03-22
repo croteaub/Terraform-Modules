@@ -29,6 +29,17 @@ variable "security_sns_config_topic_arn" {
   }
 }
 
+variable "cloudtrail_logs_group_arn" {
+  description = "The ARN of the cloudtrail logs group.  Used in the Config Rule for Cloudtrail Logs"
+  type = "map"
+  default = {
+    "us-east-1" =  "arn:aws:logs:us-east-1:583716045488:log-group:PA-CLG-P-UE1-S-CLTL-001"
+    "us-east-2" =  "arn:aws:logs:us-east-2:583716045488:log-group:PA-CLG-P-UE2-S-CLTL-001"
+    "us-west-1" =  "arn:aws:logs:us-west-1:583716045488:log-group:PA-CLG-P-UW1-S-CLTL-001"
+    "us-west-2" =  "arn:aws:logs:us-west-2:583716045488:log-group:PA-CLG-P-UW2-S-CLTL-001"
+  }
+}
+
 variable "is_config_enabled_bool" {
   description = "Turn on/off AWS Config"
   default     = "true"
