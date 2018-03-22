@@ -83,7 +83,7 @@ resource "aws_config_config_rule" "RDS-Storage-Encrypted" {
 
   source {
     owner             = "AWS"
-    source_identifier = "RDS-STORAGE-ENCRYPTED"
+    source_identifier = "rds-storage-encrypted"
   }
 
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
@@ -94,7 +94,7 @@ resource "aws_config_config_rule" "cloudtrail-enabled" {
 
   source {
     owner             = "AWS"
-    source_identifier = "CLOUDTRAIL-ENABLED"
+    source_identifier = "cloudtrail-enabled"
   }
 
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
@@ -105,7 +105,7 @@ resource "aws_config_config_rule" "encrypted-volumes" {
 
   source {
     owner             = "AWS"
-    source_identifier = "ENCRYPTED-VOLUMES"
+    source_identifier = "encrypted-volumes"
   }
 
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
