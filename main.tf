@@ -94,7 +94,7 @@ resource "aws_config_config_rule" "cloudtrail-enabled" {
 
   source {
     owner             = "AWS"
-    source_identifier = "CLOUDTRAIL_ENABLED"
+    source_identifier = "CLOUD_TRAIL_ENABLED"
   }
 
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
