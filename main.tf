@@ -89,6 +89,8 @@ resource "aws_config_config_rule" "RDS-Storage-Encrypted" {
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
 }
 
+// Creates Managed Config Rule to Check if CloudTrail is enabled and it is logging back to to the correct bucket and log group
+
 resource "aws_config_config_rule" "cloudtrail-enabled" {
   name = "Cloudtrail-Enabled"
 
@@ -108,5 +110,16 @@ resource "aws_config_config_rule" "encrypted-volumes" {
     source_identifier = "ENCRYPTED_VOLUMES"
   }
 
+  depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
+}
+
+resource "aws_config_config_rule" "iam-password-policy" {
+  name = "IAM-Password-Policy"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "IAM_PASSWORD_POLICY"
+  }
+  input_parameters = "{\"RequireUppercaseCharacters\":\"true\",\"RequireLowercaseCharacters\":\"true\",\"RequireSymbols\":\"true\",\"RequireNumbers\":\"true\",\"MinimumPasswordLength\":\"8\",\"PasswordReusePrevention\":\"8\",\"MaxPasswordAge\":\"90\"}"
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
 }
