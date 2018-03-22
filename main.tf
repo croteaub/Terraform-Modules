@@ -58,7 +58,7 @@ resource "aws_config_config_rule" "S3-Public-Read-Prohibited" {
 
   source {
     owner             = "AWS"
-    source_identifier = "S3-BUCKET-PUBLIC-READ-PROHIBITED"
+    source_identifier = "S3_BUCKET_PUBLIC_READ_PROHIBITED"
   }
 
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
@@ -70,7 +70,7 @@ resource "aws_config_config_rule" "S3-Public-Write-Prohibited" {
 
   source {
     owner             = "AWS"
-    source_identifier = "S3-BUCKET-PUBLIC-WRITE-PROHIBITED"
+    source_identifier = "S3_BUCKET_PUBLIC_WRITE_PROHIBITED"
   }
 
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
@@ -83,7 +83,7 @@ resource "aws_config_config_rule" "RDS-Storage-Encrypted" {
 
   source {
     owner             = "AWS"
-    source_identifier = "rds-storage-encrypted"
+    source_identifier = "RDS_STORAGE_ENCRYPTED"
   }
 
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
@@ -94,7 +94,7 @@ resource "aws_config_config_rule" "cloudtrail-enabled" {
 
   source {
     owner             = "AWS"
-    source_identifier = "cloudtrail-enabled"
+    source_identifier = "CLOUDTRAIL_ENABLED"
   }
 
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
@@ -105,7 +105,7 @@ resource "aws_config_config_rule" "encrypted-volumes" {
 
   source {
     owner             = "AWS"
-    source_identifier = "encrypted-volumes"
+    source_identifier = "ENCRYPTED_VOLUMES"
   }
 
   depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
