@@ -51,3 +51,62 @@ resource "aws_config_configuration_recorder_status" "aws_config_recorder_status"
   name       = "${aws_config_configuration_recorder.aws_config_recorder.name}"
   is_enabled = "${var.is_config_enabled_bool}"
 }
+
+// Managed Config Rule for S3-Public-Read-Prohibited
+resource "aws_config_config_rule" "S3-Public-Read-Prohibited" {
+  name = "S3-Public-Read-Prohibited"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "S3-BUCKET-PUBLIC-READ-PROHIBITED"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
+}
+
+// Managed Config Rule for S3-Public-Write-Prohibited
+resource "aws_config_config_rule" "S3-Public-Write-Prohibited" {
+  name = "S3-Public-Write-Prohibited"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "S3-BUCKET-PUBLIC-WRITE-PROHIBITED"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
+}
+
+// Managed Config Rule for RDS Storage Encryption
+
+resource "aws_config_config_rule" "RDS-Storage-Encrypted" {
+  name = "RDS-Storage-Encrypted"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "RDS-STORAGE-ENCRYPTED"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
+}
+
+resource "aws_config_config_rule" "cloudtrail-enabled" {
+  name = "Cloudtrail-Enabled"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "CLOUDTRAIL-ENABLED"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
+}
+
+resource "aws_config_config_rule" "encrypted-volumes" {
+  name = "Encrypted-Volumes"
+
+  source {
+    owner             = "AWS"
+    source_identifier = "ENCRYPTED-VOLUMES"
+  }
+
+  depends_on = ["aws_config_configuration_recorder.aws_config_recorder"]
+}
